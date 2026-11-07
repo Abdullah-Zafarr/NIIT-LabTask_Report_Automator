@@ -1,9 +1,9 @@
 {
-  "student_name": "Abdullah Zafar",
-  "roll_no": "F2025CS014",
+  "student_name": "Student Name",
+  "roll_no": "F202XCSXXX",
   "department": "Department of Computer Science",
   "institute": "NASTP Institute of Information Technology",
-  "semester": "III",
-  "session": "Fall – 2025 to 2029",
+  "semester": "Semester",
+  "session": "Session Years",
   "logo": "../assets/logo.png"
 }

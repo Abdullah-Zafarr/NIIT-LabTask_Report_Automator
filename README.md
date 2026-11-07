@@ -75,12 +75,12 @@ Set your default academic credentials once. The build engine injects these into 
 
 ```json
 {
-  "student_name": "Abdullah Zafar",
-  "roll_no": "F2025CS014",
+  "student_name": "Student Name",
+  "roll_no": "F202XCSXXX",
   "department": "Department of Computer Science",
   "institute": "NASTP Institute of Information Technology",
-  "semester": "III",
-  "session": "Fall – 2025 to 2029",
+  "semester": "Semester",
+  "session": "Session Years",
   "logo": "../assets/logo.png"
 }
 ```
@@ -91,12 +91,12 @@ Each assignment uses a declarative JSON specification describing the experiment 
 
 ```json
 {
-  "output_file": "Lab_Report_04.docx",
+  "output_file": "Lab_Report_01.docx",
   "meta": {
-    "report_title": "Lab Report 04",
-    "teacher": "Mam Unaiza",
+    "report_title": "Lab Report 01",
+    "teacher": "Course Instructor",
     "subject": "Data Structures & Algorithms",
-    "date": "19-10-2026"
+    "date": "DD-MM-YYYY"
   },
   "experiment_name": "Even and Odd Numbers and Loops in C++",
   "objective": "To implement and analyze control structures and iterative logic in C++.",

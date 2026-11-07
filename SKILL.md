@@ -84,8 +84,8 @@ Output:                      (12 pt, bold)
 
 ### 1. Read the manual and collect details
 The user always supplies the lab manual (docx/pdf). From it get: course/subject name,
-instructor name (**keep the title exactly as written, e.g. "Mam Unaiza", "Sir Ali",
-"Dr. Sara"; if no title is given, ask**), lab/assignment number, experiment title,
+instructor name (**keep the title exactly as written, e.g. "Dr. Sara", "Sir Ali",
+"Engr. Usman"; if no title is given, ask**), lab/assignment number, experiment title,
 tasks/questions.
 Fixed details (student name, roll no, department, institute, semester, session) live in
 `config/student.json` â€” do not ask for them again. Update that file only if the user
