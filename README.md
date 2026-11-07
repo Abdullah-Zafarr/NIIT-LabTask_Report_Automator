@@ -9,6 +9,39 @@ An end-to-end automation engine built for NASTP Institute of Information Technol
 
 ---
 
+## Sample Output Showcase
+
+Want to see the final output? Below are real page captures from a **34-page Data Structures & Algorithms lab report** compiled by this automator.
+
+[![Download Sample Report (PDF)](https://img.shields.io/badge/Download_Sample_Report-34--Page_PDF-2ea44f?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://github.com/Abdullah-Zafarr/NIIT-LabTask_Report_Automator/releases/latest)
+
+> 📥 **[Click here to download the complete 34-page sample PDF report](https://github.com/Abdullah-Zafarr/NIIT-LabTask_Report_Automator/releases/latest)** to inspect the document structure, borders, syntax highlighting, and live execution outputs.
+
+<table align="center">
+  <tr>
+    <td align="center" width="50%">
+      <b>1. Standard NIIT Cover Page</b><br><br>
+      <img src="assets/preview_cover.png" alt="NIIT Cover Page Preview" width="100%">
+    </td>
+    <td align="center" width="50%">
+      <b>2. Structured Objective, Theory & Conclusion</b><br><br>
+      <img src="assets/preview_theory.png" alt="Report Structure Preview" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <b>3. Full-Width Syntax-Highlighted Code Chunks</b><br><br>
+      <img src="assets/preview_code.png" alt="Code Chunks Preview" width="100%">
+    </td>
+    <td align="center" width="50%">
+      <b>4. Real Execution Terminal Outputs</b><br><br>
+      <img src="assets/preview_output.png" alt="Terminal Output Preview" width="100%">
+    </td>
+  </tr>
+</table>
+
+---
+
 ## Key Features
 
 - **Automated Task Execution**: Compiles and executes C, C++, Python, and JavaScript scripts while echoing interactive inputs into clean console images.
@@ -30,6 +63,10 @@ An end-to-end automation engine built for NASTP Institute of Information Technol
 .
 ├── assets/
 │   ├── logo.png             # Official university transparent logo
+│   ├── preview_cover.png    # Sample report cover page preview
+│   ├── preview_theory.png   # Sample report objective & theory preview
+│   ├── preview_code.png     # Sample syntax-highlighted code preview
+│   ├── preview_output.png   # Sample live terminal output preview
 │   └── README.md            # Asset guidance and notes
 ├── config/
 │   └── student.json         # Fixed student metadata (name, roll no, department, etc.)
