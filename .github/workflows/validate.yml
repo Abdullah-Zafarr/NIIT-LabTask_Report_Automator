@@ -1,0 +1,48 @@
+name: Validate Python Scripts & Tooling
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Compile and check syntax across all scripts
+        run: |
+          python -m py_compile automate.py
+          python -m py_compile scripts/_common.py
+          python -m py_compile scripts/build_report.py
+          python -m py_compile scripts/code_to_images.py
+          python -m py_compile scripts/make_logo_transparent.py
+          python -m py_compile scripts/preview_docx.py
+          python -m py_compile scripts/run_program.py
+          python -m py_compile scripts/screenshot_web.py
+          python -m py_compile scripts/squeeze_images.py
+          python -m py_compile scripts/terminal_to_image.py
+          python -m py_compile scripts/validate_spec.py
+
+      - name: Verify CLI executables
+        run: |
+          python automate.py --help
+          python scripts/validate_spec.py --help
