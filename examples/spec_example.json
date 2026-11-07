@@ -1,0 +1,38 @@
+{
+  "output_file": "Lab_Report_04.docx",
+
+  "meta": {
+    "report_title": "Lab Report 04",
+    "teacher": "Mam Unaiza",
+    "subject": "Data Structures & Algorithms",
+    "date": "19-10-2026"
+  },
+
+  "experiment_name": "Even and Odd Numbers and Loops in C++",
+  "objective": "To write a C++ program that checks if a number is even or odd, prints its first five multiples, and adds all numbers up to it.",
+  "theory": [
+    "**Function:** A function is a small block of code with a name. We can call it whenever we need it. Here, `isEven` tells us if a number is even.",
+    "**If-else:** The program picks one of two paths. If the condition is true, the first path runs. If not, the else path runs.",
+    "**For loop:** A for loop repeats the same lines a fixed number of times. We use it to print multiples and to add numbers.",
+    "**Input and output:** `cin` reads a value typed by the user. `cout` shows text on the screen."
+  ],
+  "conclusion": "The program ran correctly. It told us if the number was even or odd, printed five multiples, and gave the correct sum. This lab showed how functions, if-else and loops work together.",
+
+  "tasks": [
+    {
+      "question": "Write a C++ program that checks if a number is even or odd, prints its first five multiples, and finds the sum from 1 to the number.",
+      "code": ["code/q1_code_01.png", "code/q1_code_02.png", "code/q1_code_03.png"],
+      "outputs": ["out/q1_out.png"]
+    },
+    {
+      "question": "Run the same program again with different numbers.",
+      "code": [],
+      "outputs": ["out/q1_out.png", "out/q1_out.png", null]
+    },
+    {
+      "title": "Question 3",
+      "question": "In one line, what does a for loop do?",
+      "answer": ["A for loop repeats the same lines of code a fixed number of times."]
+    }
+  ]
+}
