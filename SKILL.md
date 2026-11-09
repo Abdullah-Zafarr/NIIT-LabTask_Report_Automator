@@ -46,10 +46,17 @@ without these packages. Script folder: `.agents/skills/lab-assignment/scripts/`
 9. **Squeeze rule:** if an image sits on a new page only because it is a little too tall for the previous page, shorten it vertically so it fits there. Only when the cut is small (max 12%, smallest cut that works). If it needs more than that, leave it full size. Done by `squeeze_images.py` after the build.
 10. **Font and typography:** Always use **Times New Roman** throughout the entire document (cover page, headings, body text, lists). Keep all **headings at 16 pt (bold, black)** and all **normal text at 12 pt**. Heading and text must never be the same size.
 11. **Temp files & zero root clutter (CRITICAL):** NEVER create temporary `.py` files, inspection scripts, test snippets, or scratch dumps in the root directory. ALL temporary scripts and scratch files MUST be created inside a folder named `temp/`. If any scratch script is high quality and generally reusable for future reports, move it into `$S` (`.agents/skills/lab-assignment/scripts/`). The root directory must only contain clean project directories and final submission documents.
+12. **Full-height screenshots (never squash or crop height):** Output screenshots must preserve their full natural height and aspect ratio (e.g. full 80x25 console screen `736x471`, full emulator window `760x550`). Never crop or squish the height just to force it onto a page.
+13. **Minimal comments in code:** Never add dense comments on every line. Keep comments sparse, simple, and student-level.
+14. **Lab course vs Theory course distinction (CRITICAL):**
+    - **Lab Course** (course title contains "Lab" or manual is a lab manual/experiment): Produce a **Lab Report**. Include full lab report structure (`experiment_name`, `objective`, `theory`, `conclusion`). Report title: "Lab Report NN". Tasks heading: "Lab Tasks".
+    - **Theory Course** (lecture course assignment, homework, theory problems without a lab component, e.g. DSA Theory Assignment): **DO NOT make a lab report.** Produce an **Assignment**. Set report title to "Assignment NN" (or the title from the manual). **NEVER invent or include `experiment_name`, `objective`, `theory`, or `conclusion`.** Questions start directly on page 2 under the assignment heading.
 
 ## Report structure
 
-Page 1 – Cover. Page 2 – report heading block. Next page – tasks.
+### Format A: Lab Report (for Lab Courses only)
+
+Page 1 – Cover. Page 2 – report heading block. Page 3 – Lab Tasks.
 
 ```
 Lab Report NN                (centered, bold, black, 16 pt, Times New Roman)
@@ -71,15 +78,24 @@ Output:                      (12 pt, bold)
 ```
 
 - Order is **Objective, then Theory** (as in the user's sample).
-- Name for the heading comes from the manual: "Lab Report 04", "Assignment 2", etc.
-  (`meta.report_title`).
-- Theory should only cover what the tasks use. Plain words, e.g. "A loop repeats code
-  many times" rather than "iterative control structure".
-- Conclusion is written **after** the outputs are verified, and must match the real
-  results.
-- Non-code assignments: use `answer` (list of paragraphs; items starting with `- ` become
-  bullets) instead of `code`/`outputs`. Omit `objective`/`theory`/`conclusion` or
-  `experiment_name` if the manual does not call for them.
+- Name for the heading comes from the manual: "Lab Report 04", "Lab Report 07", etc. (`meta.report_title`).
+- Theory should only cover what the tasks use. Plain words, e.g. "A loop repeats code many times" rather than "iterative control structure".
+- Conclusion is written **after** the outputs are verified, and must match the real results.
+
+### Format B: Assignment (for Theory Courses)
+
+**Never use lab report structure for a theory course.**
+Page 1 – Cover. Page 2 – Assignment heading and questions start immediately (no empty intro page, no experiment name, objective, theory, or conclusion).
+
+```
+Assignment NN (or Assignment Questions) (centered or bold heading, 16 pt, Times New Roman)
+Question N                               (bold, black heading, 16 pt)
+<question text from manual (12 pt, not bold)>
+
+Answer / Code / Output:
+```
+
+- Non-code assignments: use `answer` (list of paragraphs; items starting with `- ` become bullets) instead of `code`/`outputs`. Omit `objective`/`theory`/`conclusion` or `experiment_name` if the manual does not call for them.
 
 ## Workflow
 
@@ -135,7 +151,7 @@ Copy `examples/spec_example.json` and edit it. Keys:
 | `meta.report_title` | "Lab Report 04" |
 | `meta.teacher`, `meta.subject`, `meta.date` | per course (cover page) |
 | `meta.*` | any fixed field from student.json can be overridden |
-| `experiment_name`, `objective`, `theory[]`, `conclusion` | text; `**bold**` and `` `code` `` allowed |
+| `experiment_name`, `objective`, `theory[]`, `conclusion` | For Lab courses only. For theory courses, omit entirely. |
 | `tasks[].question` | question text (builder adds "Question N:") |
 | `tasks[].title` | optional, e.g. "Task 1" instead of "Question 1" |
 | `tasks[].code[]` | image paths from step 3 |

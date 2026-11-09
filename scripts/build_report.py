@@ -431,12 +431,26 @@ def main():
 
     build_cover(doc, meta)
     page_break(doc)
-    build_intro(doc, spec)
-    tasks = spec.get("tasks", [])
-    if tasks:
-        hp = para(doc, space_before=0, space_after=10, keep_next=True)
-        hp.paragraph_format.page_break_before = True
-        set_font(hp.add_run(spec.get("tasks_heading", "Lab Tasks")), BODY_FONT, 16, bold=True)
+    has_intro = any(spec.get(k) for k in ("experiment_name", "objective", "theory", "conclusion"))
+    if has_intro:
+        build_intro(doc, spec)
+        tasks = spec.get("tasks", [])
+        if tasks:
+            hp = para(doc, space_before=0, space_after=10, keep_next=True)
+            hp.paragraph_format.page_break_before = True
+            set_font(hp.add_run(spec.get("tasks_heading", "Lab Tasks")), BODY_FONT, 16, bold=True)
+    else:
+        title = spec.get("meta", {}).get("report_title")
+        if title:
+            p = para(doc, align=WD_ALIGN_PARAGRAPH.CENTER, space_after=12)
+            set_font(p.add_run(title), BODY_FONT, 16, bold=True)
+        tasks = spec.get("tasks", [])
+        if tasks:
+            tasks_heading = spec.get("tasks_heading")
+            if tasks_heading and tasks_heading != title:
+                hp = para(doc, space_before=6, space_after=10, keep_next=True)
+                set_font(hp.add_run(tasks_heading), BODY_FONT, 16, bold=True)
+
     for i, task in enumerate(tasks, start=1):
         new_page = bool(task.get("new_page", False)) if i > 1 else False
         build_task(doc, task.get("number", i), task, tmp_dir, new_page=new_page)
