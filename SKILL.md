@@ -45,6 +45,7 @@ without these packages. Script folder: `.agents/skills/lab-assignment/scripts/`
    natural (small) size, so avoid it.
 9. **Squeeze rule:** if an image sits on a new page only because it is a little too tall for the previous page, shorten it vertically so it fits there. Only when the cut is small (max 12%, smallest cut that works). If it needs more than that, leave it full size. Done by `squeeze_images.py` after the build.
 10. **Font and typography:** Always use **Times New Roman** throughout the entire document (cover page, headings, body text, lists). Keep all **headings at 16 pt (bold, black)** and all **normal text at 12 pt**. Heading and text must never be the same size.
+11. **Temp files & zero root clutter (CRITICAL):** NEVER create temporary `.py` files, inspection scripts, test snippets, or scratch dumps in the root directory. ALL temporary scripts and scratch files MUST be created inside a folder named `temp/`. If any scratch script is high quality and generally reusable for future reports, move it into `$S` (`.agents/skills/lab-assignment/scripts/`). The root directory must only contain clean project directories and final submission documents.
 
 ## Report structure
 
