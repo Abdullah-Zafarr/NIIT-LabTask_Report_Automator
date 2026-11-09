@@ -1,7 +1,20 @@
 """Squeeze images slightly (max 12%) in height when that lets them stay on the previous page.
-Usage: py -u squeeze_images.py report.docx [max_percent]
-Uses Word (COM). Edits the file in place. Never shrinks more than max_percent."""
-import sys, os, win32com.client
+
+Usage:
+    py -u squeeze_images.py report.docx [max_percent]
+    py squeeze_images.py report.docx --max-percent 15
+
+Uses Microsoft Word (COM). Edits the file in place. Never shrinks more than max_percent.
+"""
+
+import argparse
+import os
+import sys
+
+try:
+    import win32com.client
+except ImportError:
+    sys.exit("Missing pywin32 dependency. Install via: py -m pip install pywin32")
 
 
 def page(doc, pos):
@@ -9,8 +22,31 @@ def page(doc, pos):
 
 
 def main():
-    path = os.path.abspath(sys.argv[1])
-    max_pct = float(sys.argv[2]) if len(sys.argv) > 2 else 12.0
+    parser = argparse.ArgumentParser(
+        description="Squeeze inline image heights slightly in Word to eliminate awkward page breaks."
+    )
+    parser.add_argument("docx", help="Path to input Word (.docx) document")
+    parser.add_argument(
+        "max_percent_pos",
+        nargs="?",
+        type=float,
+        default=None,
+        help="Maximum shrink percentage (positional shorthand, default: 12.0)",
+    )
+    parser.add_argument(
+        "--max-percent",
+        "-m",
+        type=float,
+        default=12.0,
+        help="Maximum shrink percentage (default: 12.0)",
+    )
+    args = parser.parse_args()
+
+    max_pct = args.max_percent_pos if args.max_percent_pos is not None else args.max_percent
+    path = os.path.abspath(args.docx)
+    if not os.path.isfile(path):
+        sys.exit(f"Word document not found: {path}")
+
     word = win32com.client.Dispatch("Word.Application")
     word.Visible = False
     word.DisplayAlerts = 0
@@ -52,4 +88,5 @@ def main():
     print("squeezed", changed, "images", flush=True)
 
 
-main()
+if __name__ == "__main__":
+    main()
