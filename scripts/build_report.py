@@ -366,11 +366,17 @@ def build_task(doc, n, task, tmp_dir, new_page=False):
 
 
 def main():
-    if len(sys.argv) != 2:
-        sys.exit(__doc__)
-    spec_path = os.path.abspath(sys.argv[1])
+    import argparse
+    parser = argparse.ArgumentParser(description="Build assignment .docx report from specification JSON.")
+    parser.add_argument("spec", help="Path to specification JSON file")
+    args = parser.parse_args()
+
+    spec_path = os.path.abspath(args.spec)
+    if not os.path.isfile(spec_path):
+        sys.exit(f"Specification file not found: {spec_path}")
     base = os.path.dirname(spec_path)
-    spec = json.load(open(spec_path, encoding="utf-8-sig"))
+    with open(spec_path, encoding="utf-8-sig") as f:
+        spec = json.load(f)
 
     cfg_path = os.path.join(SKILL_DIR, "config", "student.json")
     meta = json.load(open(cfg_path, encoding="utf-8"))
